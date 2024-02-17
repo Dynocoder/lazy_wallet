@@ -1,0 +1,7 @@
+{
+  "name": "lazy_wallet",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
