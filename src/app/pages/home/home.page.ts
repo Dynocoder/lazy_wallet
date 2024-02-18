@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Account } from '../add-account/add-account.page';
 
 @Component({
   selector: 'app-home',

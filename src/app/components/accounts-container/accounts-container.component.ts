@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { Account } from 'src/app/pages/add-account/add-account.page';
+import { EditAccountModalComponent, ModalResponse } from '../edit-account-modal/edit-account-modal.component';
 
 @Component({
   selector: 'app-accounts-container',
   templateUrl: './accounts-container.component.html',
   styleUrls: ['./accounts-container.component.scss'],
 })
-export class AccountsContainerComponent  implements OnInit {
+export class AccountsContainerComponent {
 
     accounts: Array<Account> = [
     {
@@ -43,8 +45,34 @@ export class AccountsContainerComponent  implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController
+  ) { }
 
-  ngOnInit() {}
 
+  async openModal(item: Account) {
+    const modal = await this.modalController.create({
+      component: EditAccountModalComponent,
+      componentProps: { selectedComponent: item }
+    });
+
+    await modal.present();
+
+    modal.onWillDismiss().then((data) => {
+      console.log("this is data" + JSON.stringify(data))
+      if (data.role === ModalResponse.Confirm) {
+        this.updateAccounts(data.data);
+      }
+    });
+  }
+
+
+  updateAccounts(data: Account) {
+    this.accounts.forEach(item => {
+      if (item.accountId === data.accountId) {
+        item.name = data.name;
+        item.currentBalance = data.currentBalance;
+      }
+    })
+  }
 }
