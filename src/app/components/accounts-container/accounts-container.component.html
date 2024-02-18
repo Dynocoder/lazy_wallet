@@ -1,0 +1,30 @@
+<ion-item>
+  <ion-grid >
+    <div *ngFor="let item of accounts; let i = index" >
+      <ion-row *ngIf="i % 2 === 0">
+        <ion-col *ngIf="accounts[i]">
+          <a href="edit-account/accounts[i].accountId" >
+            <ion-card class="ion-activatable ripple-parent rectangle">
+              <ion-card-content>
+                <h5><b>${{accounts[i].currentBalance}}</b></h5>
+                <p>{{accounts[i].name}}</p>
+              </ion-card-content>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card>
+          </a>
+        </ion-col>
+        <ion-col *ngIf="accounts[i+1]">
+          <a href="edit-account/accounts[i+1].accountId" >
+            <ion-card class="ion-activatable ripple-parent rectangle">
+              <ion-card-content>
+                <h5><b>${{accounts[i+1].currentBalance}}</b></h5>
+                <p>{{accounts[i+1].name}}</p>
+              </ion-card-content>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card>
+          </a>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-item>
