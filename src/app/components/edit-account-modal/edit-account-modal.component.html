@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>{{ selectedComponent? 'Edit Account' : 'Add Account'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <form action="" [formGroup]="queryParams">
+    <br>
+    <ion-input formControlName="name" label="Account Name" label-placement="floating" fill="solid" placeholder="Enter text"></ion-input>
+    <br>
+    <ion-input type="number" formControlName="currentBalance" label="Initial Balance" value="0" label-placement="floating" fill="solid" placeholder="Enter text"></ion-input>
+    <br>
+  </form>
+</ion-content>
